@@ -1,0 +1,28 @@
+# Get installer
+http://conda.pydata.org/miniconda.html
+
+# make the bash file executable with the chmod command (755)
+
+# Then execute the bash installer
+./Miniconda3-3.7.0-Linux-x86.sh
+
+# Create new environment
+conda create -n ipynb3 python=3
+
+# Activate environment
+source activate ipynb3
+
+# To de-activate environment
+source deactivate
+
+# To list packages
+conda list
+
+# To install packages
+conda install <package name>
+
+# Things to install for data analysis environment using conda install command
+pip, numpy, scipy, pandas, statsmodels, matplotlib, pyzmq, tornado, jinja2, ipython
+
+# Things that can only be installed using pip (not included in Anaconda distribution)
+ggplot, seaborn

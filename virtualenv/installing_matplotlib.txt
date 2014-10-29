@@ -1,0 +1,9 @@
+Beforehand, need to install:
+sudo apt-get install libfreetype6-dev libpng-dev
+
+if that doesn't work then execute:
+sudo apt-get build-dep matplotlib, then do pip install matplotlib
+
+if that still don't work, then download the source tar file, unzip, 
+then do python setup.py build
+then python setup.py install

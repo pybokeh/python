@@ -1,0 +1,15 @@
+# Program that shows how to get input from user
+# Valid for Python 3.0 and above
+
+while True:
+    num1 = input('Enter number: ')
+    if num1 == 'stop':
+        break
+    try:
+        num = int(num1)
+    except:
+        print("It is not a number!")
+    else:
+        print(int(num1) ** 2)
+
+print('Bye')

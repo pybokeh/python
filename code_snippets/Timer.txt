@@ -1,0 +1,12 @@
+import time
+
+start_time = time.clock()
+
+f = open(r'D:\_mycode\python\code_snippets\PrintFileLineByLine.txt', 'r')
+
+for line in f:
+     print line
+
+duration = time.clock() - start_time
+
+print duration

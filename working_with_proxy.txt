@@ -1,0 +1,5 @@
+In Windows, need to create environment variables:
+Using DOS comands:
+    set HTTP_PROXY=http://user:pw@server:port
+    set HTTPS_PROXY=https://user:pw@server:port
+    set FTP_PROXY=ftp://user:pw@server:port

@@ -1,0 +1,11 @@
+cnxn_string = "DRIVER={MySQL ODBC 5.1 Driver};SERVER=XPO33027;PORT=3306;DATABASE=test;UID=read;PWD=;OPTION=3"
+cnxn = pyodbc.connect(cnxn_string)
+cursor = cnxn.cursor()
+cursor.execute("select * from tpms_id where txtVIN like '19U%' and txtValue = '8DB181E9'")
+resultset = cursor.fetchall()
+for row in resultset:
+    print row
+
+cnxn.commit()
+cursor.close()
+cnxn.close()

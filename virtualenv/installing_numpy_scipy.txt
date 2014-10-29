@@ -1,0 +1,4 @@
+before installing scipy in virtualenv, need to install it's dependencies:
+sudo apt-get install python-dev python3-dev libblas-dev libatlas-base-dev libopenblas-base liblapack-dev gcc gfortran cython
+
+or sudo apt-get build-dep python-numpy python-scipy

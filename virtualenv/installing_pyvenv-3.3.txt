@@ -1,0 +1,31 @@
+####  As of Python version 3.3, pyvenv does not install pip, Python version 3.4 will  ####
+http://docs.python.org/dev/library/venv.html
+http://docs.python.org/3/library/venv.html#module-venvs
+
+To create new virtual environment, enter following command at terminal:
+pyvenv-3.3 /path/to/environment
+
+And then to activate it:
+source /path/to/environment/bin/activate
+
+To add to the above, and as per docs:
+For example, after executing: pyvenv-3.3 /path/to/my_project/venv
+You can run distribute_setup.py, which seems to do various things, but essentially you end up with easy_install in your ./my_project/venv/bin directory.
+This can then be used to install pip and the like.
+
+It does not say where you should get distribute_setup.py from, so I downloaded from:
+
+http://python-distribute.org/distribute_setup.py
+and using the activated environment:
+
+cd /path/to/my_project
+source venv/bin/activate
+then execute:
+python distribute_setup.py
+
+then do:
+easy_install pip
+
+then do:
+pip -V to confirm which pip the virtual environment is using.  If not the correct one, then try:
+pip-3.3 or whatever is in the /bin folder

@@ -1,0 +1,81 @@
+BASIC LINE PLOT
+plt.plot(xvalues, yvalues, markertype, label='mylabel')
+markertype can be the following:
+'o' - circle
+'^' - triangle
+'s' - square
+'+' - plus
+'x' - cross
+'D' - diamond
+'-' - solid line
+'--' - dashed line
+'-.' - dash-dot line
+':' - dotted line
+For complete list of plot attributes, execute the following:
+from matplotlib import pylab as plt
+help(plt.plot)
+
+
+ADDING LEGEND
+plot.legend(yvalues, loc='top'|'right'|'left'|'bottom'|'best')
+
+SUB-PLOTTING
+fig_1 = plt.figure(1)
+plt.subplot(total_rows,total_columns,fig_1)
+...
+...
+...
+fig_n = plt.figure(n)
+plt.subplot(total_rows, total_columns, fig_n)
+plt.show()
+
+BASIC FORMATTING
+plt.xlabel(string, fontsize=num)
+plt.ylable(string, fontsize=num)
+plt.title(string, fontsize=num)
+plt.xticks(ndarray, label, rotation=, size=)
+plt.yticks(ndarray, label, rotation=, size=)
+
+AXIS FORMATTING
+Set min/max values on y- or x-axis, use: plt.xlim(min,max) or plt.ylim(min,max)
+
+Reference: http://matplotlib.sourceforge.net/examples/pylab_examples/major_minor_demo1.html#pylab-examples-major-minor-demo1
+from matplotlib.ticker import MultipleLocator, FormatStrFormatter
+get axis instance by doing the following:
+    ax = plt.gca()
+major_tick_format = FormatStrFormatter('%d')
+major_ticks = MultipleLocator(10)
+minor_ticks = MultipleLocator(2)
+ax.yaxis.set_major_locator(major_ticks)
+ax.yaxis.set_minor_locator(minor_ticks)
+ax.yaxis.set_yticklabels(['ELP CRV','HDM CRV', 'TL', 'RDX', 'CIVIC', 'ELEMENT','ACCORD'])
+ytick_labels = ax.get_yticklabels()
+for label in ytick_labels:
+    label.set_fontsize(6)
+ax.yaxis.grid(which='major'|'minor', linestyle={'-','--','-.',':'}, linewidth=int)
+
+##################################  Plot Types  ###################################
+BOXPLOT
+current_axis = plt.gca()
+current_axis.set_yticklabels(['ELP CRV','HDM CRV', 'TL', 'RDX', 'CIVIC', 'ELEMENT','ACCORD'])
+data = [ELP_CRV_2009, HDM_CRV_2009, TL_2009, RDX_2009, ELP_CIV_2009, ELE_2009, ACC_2009]
+plt.boxplot(data, vert=0)
+
+HISTOGRAM
+n, bins, patches = plt.hist(data, num_bins, normed=False, cumulative=False, facecolor='red')
+
+BAR
+plt.bar(xvalues, yvalues)  # bar(xvalues, yvalues)
+plt.xticks(xvalues+0.5, labels_seq, rotation=90, size='small')
+
+EMPIRICAL CDF
+import scikits.statsmodels.tools.tools as tools
+ecdf = tools.ECDF(ELP_CRV_2009)
+x = np.linspace(min(ELP_CRV_2009), max(ELP_CRV_2009))
+y = ecdf(x)
+plt.step(x,y,'r-')
+
+TEXT
+ax = fig4.add_axes([0,0,1,1]) # This sets up axis dimensions of 1 x 1
+ax.text(0.05, 0.65, str('2009M ELP CRV:\n'+str(dfCRV_09.describe())), color='black', transform=ax.transAxes)
+ax.set_axis_off()

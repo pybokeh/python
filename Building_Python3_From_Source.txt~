@@ -1,0 +1,48 @@
+######  Part 1  ######
+sudo apt-get install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev
+sudo apt-get install libreadline-dev libncursesw5-dev libncurses5-dev zlib1g-dev libssl-dev tk-dev
+wget http://www.python.org/ftp/python/3.3.3/Python-3.3.3.tar.bz2
+tar xvf ./Python-3.3.3.tar.bz2
+cd ./Python-3.3.3
+./configure --prefix=/opt/python3.3.3
+make && sudo make install
+
+######  Part 2  #######
+sudo apt-get install python-setuptools python-pip
+
+######  Part 3  ######
+mkdir ~/venv
+cd ~/venv
+whereis python (to find full path to python interpreter)
+virtualenv -p /opt/bin/python3.3.3/python3.3 python3.3.3
+
+
+######  Python 3.3.4  ######
+sudo apt-get install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev
+sudo apt-get install libreadline-dev libncursesw5-dev libncurses5-dev zlib1g-dev libssl-dev libbz2-dev tk-dev
+wget http://python.org/ftp/python/3.3.4/Python-3.3.4.tgz
+tar xvf ./Python-3.3.4.tgz
+cd ./Python-3.3.4
+./configure --prefix=/opt/python3.3.4
+make && sudo make install
+
+######  Python 3.4.1  ######
+sudo apt-get install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev
+sudo apt-get install libreadline-dev libncursesw5-dev libncurses5-dev zlib1g-dev libssl-dev tk-dev
+wget https://www.python.org/ftp/python/3.4.1/Python-3.4.1.tar.xz
+tar xf Python-3.4.1.tar.xz
+cd Python-3.4.1
+./configure --prefix=/opt/python3.4.1
+make && sudo make install
+
+whereis python
+mkdir ~/venv
+cd ~/venv    # move to venv directory
+/opt/python3.4.1/bin/pyvenv-3.4 ijulia   # create ijulia virtual environment using Python 3.4's pyvenv
+cd ijulia
+source bin/activate  # activate the environment
+pip --version        # double-check the pip version
+
+######  Installing Same Packages as Prior Python Version  ######
+pip freeze > installed.txt  (on older Python version)
+pip install -r installed.txt (current Python version)

@@ -1,0 +1,3 @@
+pip install zope.interface
+sudo apt-get install python2.7-dev
+pip install twisted

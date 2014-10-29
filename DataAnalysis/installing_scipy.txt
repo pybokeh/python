@@ -1,0 +1,2 @@
+# To install scipy, need to install these dependencies first
+sudo apt-get install gfortran libopenblas-dev liblapack-dev

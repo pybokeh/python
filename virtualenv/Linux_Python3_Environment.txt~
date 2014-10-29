@@ -1,0 +1,28 @@
+numpy / scipy (sudo apt-get install python-dev python3-dev libblas-dev libatlas-base-dev libopenblas-base liblapack-dev gcc g++ gfortran cython)
+six
+nose
+python-dateutil
+pyparsing
+pytz
+pyzmq
+tornado
+pyqt4 (sudo apt-get install python3-pyqt4)
+matplotlib
+	sudo apt-get install libfreetype6-dev libpng-dev
+	download tar.gz from https://github.com/matplotlib/matplotlib/downloads
+	with python 3 virtual environment activated, execute:
+		python setup.py build
+		python setup.py install
+ipython
+	ipython notebook
+		pip install pyzmq
+		pip install tornado
+		pip install jinja2
+		Install MathJax by starting ipython3 session(at terminal: ipython3), then execute:
+			from IPython.external.mathjax import install_mathjax
+			install_mathjax()
+pandas
+numexpr
+bottleneck
+patsy
+statsmodels

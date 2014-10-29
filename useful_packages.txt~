@@ -1,0 +1,24 @@
+# Progress bar
+https://github.com/noamraph/tqdm
+
+# System and process utility
+https://code.google.com/p/psutil/
+
+# A better JSON parser
+pip install simplejson
+
+# Symbolic math (www.sympygamma.com)
+pip install sympy
+
+# Crypto library - passlib
+# http://pythonhosted.org/passlib/index.html
+pip install passlib 
+
+# prettytable
+https://code.google.com/p/prettytable/wiki/Tutorial
+
+# requests
+pip requests
+
+# arrow: a better date/datetime api
+pip arrow

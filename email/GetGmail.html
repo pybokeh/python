@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<TITLE>
+Get Email From Gmail
+</TITLE>
+</HEAD>
+<BODY>
+
+<script language="javascript" type="text/javascript">
+<!--
+function validate()
+{
+  if (document.form.email.value=='' ||
+  document.form.password.value=='' || document.form.date.value=='') {
+     alert('You must enter your gmail address, password, and date(dd-Mmm-yyyy).');
+     document.form.email.focus();
+     return false;
+  }
+}
+//-->
+</script>
+
+<FORM name="form" ACTION="/python/cgi-bin/getGmail.py" METHOD="POST" onSubmit='return validate();'>
+<H3>This web application allows you to view (pure text only) your Gmail emails sent to you since a specified date.</H3>
+<TABLE>
+<TR>
+       <TD>Your Gmail address:</TD>
+       <TD>
+     <INPUT ALIGN=left NAME="email" SIZE="35">
+   </TD>
+</TR>
+<TR>
+       <TD>Gmail password:</TD>
+       <TD>
+ <INPUT ALIGN=left NAME="password" SIZE="12" type=password>
+ </TD>
+</TR>
+<TR>
+       <TD>Emails Sent Since(dd-Mmm-yyyy):</TD>
+       <TD>
+     <INPUT ALIGN=left NAME="date" SIZE="12">
+   </TD>
+</TR>
+</TABLE>
+ <INPUT TYPE="submit" NAME="Submit" VALUE="Submit">
+ <INPUT TYPE="reset" VALUE=Reset>
+</FORM>
+
+
+</BODY>
+</HTML>

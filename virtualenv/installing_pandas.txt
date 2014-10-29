@@ -1,0 +1,16 @@
+dependencies:
+numpy
+python-dateutil
+pytz
+
+recommended dependencies:
+numexpr
+bottleneck
+
+optional dependencies:
+scipy
+matplotlib
+statsmodels (depends on patsy)
+openpyxl
+beautifulsoup4
+lxml (install its dependencies: sudo apt-get install libxml2-dev libxslt1-dev zlib1g-dev)

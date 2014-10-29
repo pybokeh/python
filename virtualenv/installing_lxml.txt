@@ -1,0 +1,3 @@
+sudo apt-get install libxml2-dev libxslt1-dev zlib1g-dev
+
+or sudo apt-get build-dep python-lxml

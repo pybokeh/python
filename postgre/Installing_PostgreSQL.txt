@@ -1,0 +1,37 @@
+STEP 1:
+sudo apt-get install postgresql-9.1
+
+STEP 2:
+default user name is postgres
+
+Configure your postgresql password:
+sudo -u postgres psql template1
+ALTER USER postgres with encrypted password  'your_password';
+
+STEP 3:
+Configure MD5 configuration by editing the pg_hba.config file:
+sudo gvim /etc/postgresql/9.1/main/pg_hba.config
+
+change: local all postgres peers
+to:     local all postgres md5
+
+STEP 4:
+Enable TCP/IP Connections by editing the postgresql.config file:
+sudo gvim /etc/postgresql/9.1/main/postgresql.conf
+
+change: #listen_addresses = 'localhost'
+to:      listen_addresses = 'localhost' or to ip #      
+
+STEP 5:
+RESTART PostgreSQL:
+sudo service postgresql restart (other options: start/stop/)
+
+STEP 6:
+Connect to PostgreSQL server as 'postgres' user
+sudo -u postgres psql
+
+To create database
+From terminal: sudo -u postgres createdb mydb
+
+Data directory is set in the postgresql.config file:
+data_directory = '/var/lib/postgresql/9.1/main'

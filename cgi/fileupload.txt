@@ -1,0 +1,85 @@
+import cgi, os
+from urlparse import urlparse
+import cgitb; cgitb.enable()
+
+http_referer = os.environ['HTTP_REFERER']  # For example: http://localhost/www/_FileUpload.html
+
+# Now just get the URL suffix, we don't care about the full URL
+url_parser = urlparse(http_referer)
+url_suffix = url_parser.path
+# url_suffix = '/www/_FileUpload.html'
+
+file = "d:\\tomcat\\webapps"+url_suffix.replace("/","\\")  #  Since the web server's file system is Windoze, replace forward slash with back slash
+# file = 'd:\tomcat\webapps\www\_FileUpload.html'
+index = file.rfind("\\")  # Find right-most back slash
+file_location = file[:index+1]  # Get file path and name = d:\tomcat\webapps\www\
+file_name = file[index+1:]   # _FileUpload.html
+
+# These 2 statements below are used to create the URL where the file was uploaded to.  It will be used by the print statement at bottom of this file.
+index2 = http_referer.rfind("/")
+home = http_referer[:index2+1]
+# home = 'http://localhost/www/'
+
+try: # Windows needs stdio set for binary mode.
+    import msvcrt
+    msvcrt.setmode (0, os.O_BINARY) # stdin  = 0
+    msvcrt.setmode (1, os.O_BINARY) # stdout = 1
+except ImportError:
+    pass
+
+form = cgi.FieldStorage()
+
+# Generator to buffer file chunks
+def fbuffer(f, chunk_size=10000):
+   while True:
+      chunk = f.read(chunk_size)
+      if not chunk: break
+      yield chunk
+      
+# A nested FieldStorage instance holds the file
+fileitem = form["upfile"]
+
+# Test if the file was uploaded
+if fileitem.filename:
+
+   # strip leading path from file name to avoid directory traversal attacks
+   fn = os.path.basename(fileitem.filename)
+   f = open(file_location + fn, 'wb', 10000)
+
+   # Read the file in chunks
+   for chunk in fbuffer(fileitem.file):
+      f.write(chunk)
+   f.close()
+   message = 'The file "' + fn + '" was uploaded successfully'
+
+else:
+   message = 'No file was uploaded'
+
+index_file = open(file_location+"\\index.html",'w')
+index_file.write('Content-type: text/html\n\n' + '<meta http-equiv="REFRESH" content="0;url=' + home + '">\n')
+index_file.write("<h5>DISCLAIMER: The contents of this web page do not necessarily reflect the views or principles of Honda of America Manufacturing, Inc., Honda Motor Ltd., or any of their affiliates.</h5>")
+
+for filename in os.listdir(file_location):
+    if (os.path.isfile(file_location+filename) and filename != "index.html"):
+        index_file.write("<A HREF=\""+filename+"\">"+filename+"</A><br>\n")
+
+index_file.write("</html>\n")
+index_file.close()
+
+print """
+Content-Type: text/html\n\n
+<html><body>
+<p>%s</p>
+""" % (message,)
+print "<p>Click <A HREF=\""+home+"\"> here</A> to access uploaded file(s).  You may have to click the Refresh button to see the file.</p></body></html>"
+
+# Use this print for debugging purposes:
+# print """
+# Content-Type: text/html\n\n
+# <html><body>
+# <p>%s</p>
+# <p>Home is: %s</p>
+# <p>File location is: %s</p>
+# <p>File name is: %s</p>
+# """ % (message, home, file_location, file_name)
+# print "<p>Click <A HREF=\""+home+"\"> here</A> to access uploaded file(s).</p></body></html>"

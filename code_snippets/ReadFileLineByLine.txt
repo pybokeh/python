@@ -1,0 +1,39 @@
+input_file = open(r'D:\tomcat\webapps\DensoOBD\files\BatteryTesterCodes\CreateBattFlatFileScript.txt')
+output_file = open(r'D:\tomcat\webapps\DensoOBD\files\BatteryTesterCodes\target_file.txt','w')
+
+for line in input_file:
+  line = line.strip()+'MARKER'
+  output_file.write(line)
+
+input_file.close()
+output_file.close()
+
+Alternate method (useful if you need to treat the 1st line differently than the rest of the lines):
+# Read the 1st row
+first_row = input_file.readline().strip()
+
+# Read the rest of the rows:
+while input_file:
+    line = input_file.readline().strip()
+    if line == "":
+        break
+    else:
+        # Do something...
+
+input_file.close()
+output_file.close()
+
+Another method:
+with open(...) as f:
+    for line in f:
+        <do something with line>
+
+if you need to read just the first 5 rows of the text:
+fp = open(r'path_to_your_file')
+row_list = []
+for i, line in enumerate(fp):
+    if i < 5:
+        row_list.append(line)
+    else:
+        break
+fp.close()

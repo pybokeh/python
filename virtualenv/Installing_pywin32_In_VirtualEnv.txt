@@ -1,0 +1,36 @@
+From this SO question: http://stackoverflow.com/questions/1830304/how-can-i-use-pywin32-with-a-virtualenv-without-having-to-include-the-host-envir
+
+I found http://old.nabble.com/Windows:-virtualenv-and-pywin32--td27658201.html which offered the following solution, which worked for me:
+
+Download the latest pywin32 .exe installer from http://sourceforge.net/projects/pywin32/ 
+Activate your virtualenv
+Run easy_install blah.exe where the path matches your downloaded file 
+A similar solution from the same page is:
+
+Get the URL of the exe from http://sourceforge.net/projects/pywin32/ 
+Activate your virtualenv
+Run easy_install http://path.to/.exe/download 
+I originally got this error for the second solution:
+
+error: c:\users\blah\appdata\local\temp\easy_install-ibkzv7\pywin32-214.win32-py2.6.exe is not a valid distutils Windows .exe
+
+...but tovmeod reports in the comments that it is now working with modern versions of setuptools (circa February 2014). If it doesn't work for you, try the first method instead.
+
+
+--------------------------------------------------------------------------------
+
+I rather hopefully tried "pip install" rather than "easy_install", but this didn't work.
+
+
+--------------------------------------------------------------------------------
+
+Finally, I found but haven't tested the solution at http://www.mail-archive.com/python-list@python.org/msg272040.html which is:
+
+Solved this by copying the pywin32.pth file into my virtualenv site-packages and editing the file to point to the path.
+
+
+
+
+URL to pywin32.exe:
+
+http://sourceforge.net/projects/pywin32/files/pywin32/Build%20219/pywin32-219.win32-py3.3.exe/download

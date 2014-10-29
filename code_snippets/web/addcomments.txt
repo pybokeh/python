@@ -1,0 +1,63 @@
+import os
+import cgi
+import cgitb
+from urlparse import urlparse
+cgitb.enable()
+
+# Go get the URL/html page that the user requested
+http_referer = os.environ['HTTP_REFERER']  # For example:  http://localhost/python/www/captions.html
+
+# Now just get the URL suffix, we don't care about the full URL
+url_parser = urlparse(http_referer)
+url_suffix = url_parser.path
+# url_suffix = '/python/www/captions.html'
+
+# Now concatenate the URL suffix with physical drive location of the webapp directory
+orig_file = "d:\\tomcat\\webapps"+url_suffix.replace("/","\\")   # Replace forward slash with backslash since we're on Windoze, not Linux
+# original file = "d:\tomcat\webapps\python\www\captions.html"
+
+# Now prepare temporary file which we will later replace the original file with, we are going to keep the same name, but add _bak at the end
+temp_file = orig_file.replace(".html","_bak.html")
+# temporary file = "d:\tomcat\webapps\python\www\AddComments2Image_bak.html"
+
+
+# Now create input file for read-only access and output file for write access
+input_file = open(orig_file,'r')
+output_file = open(temp_file,'w')
+
+
+# Get the comment that the user entered in the HTML text box, then format it for HTML
+form = cgi.FieldStorage()
+comment = form["comment"].value
+comment = comment.replace('<','&#60;').replace('>','&#62;')
+comment_formatted = "<p>\"" + comment + "\"</p>\n"
+
+# Read the entire contents of the orginal file as lines stored in a list (a list of lines)
+lines_list = input_file.readlines()  #  FYI, this is very inefficient. Do not use readlines() if there are several thousands of comments...
+
+input_file.close()
+
+# Find where the first comment is in the HTML page
+index = lines_list.index("<!-- START COMMENTS -->\n")
+
+# Now insert the new comment at the top of the comments
+lines_list.insert(index+1,comment_formatted)
+
+# Now write the contents of the new HTML file to the temporary output file
+for line in lines_list:
+    output_file.write(line)
+
+output_file.close()
+
+# Now swap the original file with the temporary file with updated user comments
+in_file = open(temp_file,'r')
+out_file = open(orig_file,'w')
+
+in_file_contents = in_file.read()
+out_file.write(in_file_contents)
+
+in_file.close()
+out_file.close()
+
+# Now, refresh the page with newly added comment-we're done!
+print 'Content-type: text/html\n\n' + '<meta http-equiv="REFRESH" content="0;url=' + http_referer + '">'

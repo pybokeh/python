@@ -1,0 +1,18 @@
+http://continuum.io/blog/anaconda-python-3
+http://conda.pydata.org/docs/
+http://conda.pydata.org/docs/config.html
+https://groups.google.com/a/continuum.io/forum/#!topic/anaconda/DWBS1nHBQqg
+
+download miniconda3.x at http://conda.pydata.org/miniconda.html
+
+To create environment:
+conda create -n myenv
+
+To activate the environment:
+activate myenv
+
+To install packages:
+conda install package_name
+
+To list packages in activated environment:
+conda list

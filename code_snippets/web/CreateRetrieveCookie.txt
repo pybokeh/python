@@ -1,0 +1,16 @@
+import os, Cookie
+
+# Create cookie
+mycookie = Cookie.SimpleCookie()
+mycookie["username"] = os.environ["USERNAME"]
+
+# This actually sets the cookie on client's browser
+print "Content-Type: text/html"
+print mycookie, "\n\n"
+
+# Server retrieves the cookie
+cookiefromclient = Cookie.SimpleCookie()
+if os.environ.has_key("HTTP_COOKIE"):
+    cookiefromclient.load(os.environ["HTTP_COOKIE"])
+    print cookiefromclient["username"].value
+

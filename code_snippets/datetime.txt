@@ -1,0 +1,74 @@
+﻿# If you want date and time, then import datetime
+from datetime import datetime
+
+mydate_withtime = datetime.now()
+
+# Use 'strftime' to convert a Python datetime object to a string (ex. 'mm/dd/YYYY - hr:min) - See below
+mydate_withtime.strftime("%m/%d/%Y - %I:%M%p")
+
+# To parse a string date into an actual Python datetime object, use strptime() method. Example:
+dt = datetime.strptime("21/11/06 16:30", "%d/%m/%y %H:%M")
+
+# If you just need date, them import date
+from datetime import date
+
+mydate = date.today()
+year  = mydate.year
+month = mydate.month
+day   = mydate.day
+
+
+# For date/time arithmetic, import timedelta from the datetime module
+from datetime import timedelta
+
+ten_days_ago = today - timedelta(days=10)
+four_weeks_ago = today - timedelta(weeks=4)
+
+# For time zone-aware capability, use pytz and dateutil
+import dateutil
+from pytz import timezone
+
+# This date below is in UTC date/time format or ISO-8601 format: http://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC
+# For graphical representation: http://www.timeanddate.com/time/map/
+str_date = '2014-06-12T17:00:00.000-03:00'  # ISO-8601 format, the "-03:00" at the end is called the UTC offset
+mydate = dateutil.parser.parse(str_date)
+local_date = mydate.astimezone(eastern).strftime('%Y-%m-%d %I:%M%p %Z')  # returns Eastern Daylight Timezone
+print(local_date) # returns: 2014-06-12 04:00PM EDT
+
+
+Below are format flags when using "strftime":
+Directive 	Meaning 	Notes
+    %a 	    Locale’s abbreviated weekday name. 	 
+    %A 	    Locale’s full weekday name. 	 
+    %b 	    Locale’s abbreviated month name. 	 
+    %B 	    Locale’s full month name. 	 
+    %c 	    Locale’s appropriate date and time representation. 	 
+    %d 	    Day of the month as a decimal number [01,31]. 	 
+    %f 	    Microsecond as a decimal number [0,999999], zero-padded on the left 	                     (1)
+    %H 	    Hour (24-hour clock) as a decimal number [00,23]. 	 
+    %I 	    Hour (12-hour clock) as a decimal number [01,12]. 	 
+    %j 	    Day of the year as a decimal number [001,366]. 	 
+    %m 	    Month as a decimal number [01,12]. 	 
+    %M 	    Minute as a decimal number [00,59]. 	 
+    %p 	    Locale’s equivalent of either AM or PM. 	                                                 (2)
+    %S 	    Second as a decimal number [00,61]. 	                                                     (3)
+    %U 	    Week number of the year (Sunday as the first day of the week) as a decimal number [00,53].
+            All days in a new    year preceding the first Sunday are considered to be in week 0. 	     (4)
+    %w 	    Weekday as a decimal number [0(Sunday),6].
+    %W 	    Week number of the year (Monday as the first day of the week) as a decimal number [00,53]. 
+            All days in a new year preceding the first Monday are considered to be in week 0. 	         (4)
+    %x 	    Locale’s appropriate date representation. 	 
+    %X 	    Locale’s appropriate time representation. 	 
+    %y 	    Year without century as a decimal number [00,99]. 	 
+    %Y 	    Year with century as a decimal number. 	 
+    %z 	    UTC offset in the form +HHMM or -HHMM (empty string if the the object is naive). 	         (5)
+    %Z 	    Time zone name (empty string if the object is naive). 	 
+    %% 	    A literal '%' character. 	 
+
+Notes:
+
+   1. When used with the strptime() method, the %f directive accepts from one to six digits and zero pads on the right. %f is an extension to the set of format characters in the C standard (but implemented separately in datetime objects, and therefore always available).
+   2. When used with the strptime() method, the %p directive only affects the output hour field if the %I directive is used to parse the hour.
+   3. The range really is 0 to 61; according to the Posix standard this accounts for leap seconds and the (very rare) double leap seconds. The time module may produce and does accept leap seconds since it is based on the Posix standard, but the datetime module does not accept leap seconds in strptime() input nor will it produce them in strftime() output.
+   4. When used with the strptime() method, %U and %W are only used in calculations when the day of the week and the year are specified.
+   5. For example, if utcoffset() returns timedelta(hours=-3, minutes=-30), %z is replaced with the string '-0330'.

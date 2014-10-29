@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/13370525/filling-continuous-pandas-dataframe-from-sparse-dataframe
+
+Suppose we have pandas time series data like:
+2003-06-24    2
+2003-08-13    1
+2003-08-19    2
+2003-08-22    1
+2003-08-24    5
+
+To fill in the missing dates, we would use the reindex() method:
+ts.reindex(pd.date_range(min(date_index), max(date_index)),fill_value=0)

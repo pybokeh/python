@@ -1,0 +1,5 @@
+import os  os.startfile(filepath)
+
+or
+
+import subprocess  subprocess.call(['C:\\Temp\\a b c\\Notepad.exe'])

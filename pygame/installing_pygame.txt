@@ -1,0 +1,6 @@
+# http://askubuntu.com/questions/203630/easy-install-pygame-not-working-due-to-linux-videodev-h-no-such-file-or-direct 
+Installing pygame with pip:
+sudo apt-get build-dep python-pygame
+sudo apt-get install libv4l-dev
+cd /usr/include/linux
+sudo ln -s ../libv4l1-videodev.h videodev.h

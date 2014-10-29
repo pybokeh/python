@@ -1,0 +1,9 @@
+data analysis - pandas
+charting - matplotlib
+statistics - scikits.statsmodels
+math or arrays package - numpy
+scientific package - scipy
+# Need to install these dependencies before installing scipy
+sudo apt-get install gfortran libopenblas-dev liblapack-dev
+reading/writing Excel 2003 - xlrd or xlwt
+reading/writing Excel 2007+ - openpyxl

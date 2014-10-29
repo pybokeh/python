@@ -1,0 +1,6 @@
+Generating random numbers
+for 2-parameter Weibull:
+    scale_parameter * numpy.random.weibull(shape_paramter,size=n)
+
+for Normal:
+    nums = numpy.random.normal(mu,std,size=None)

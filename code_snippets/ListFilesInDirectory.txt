@@ -1,0 +1,60 @@
+import os
+
+print os.listdir(mypath)
+
+--------------------------------------------
+List all subdirectories and their contents (files) in the directory tree.
+This snippet lists the contents of 4 directories (current directory+3 subdirectories)
+
+import os
+
+path = "c:\\python26"
+
+i=0
+for (path, dirs, files) in os.walk(path):
+	print path
+	print dirs
+	print files
+	print "----"
+	i = 1 + 1
+	if i >= 4:
+		break
+
+-------------------------------------------
+List all subdirectories and their contents (files) in the directory tree.
+
+import os
+
+for dirname, dirnames, filenames in os.walk('.'):
+	for subdirname in dirnames:
+		print os.path.join(dirname, subdirname)
+	for filename in filenames:
+		print os.path.join(dirname, filename)
+
+#############################################################################################
+###  Python script to "scrape" the file names, its folder, and extension from a specific  ###
+###  directory and also include its sub-directories                                       ###
+#############################################################################################
+
+import os
+
+# Only my computer, X: drive is mapped to \\cadfile01\Auto_Prototype\2GA_HEV, the folder to scrape the file names from
+path = "X:\\"
+
+# Dump the results into a text file
+output_file = open("d:\\output.txt",'w')
+
+# Write the column names into the output file first, delimited by "|"
+output_file.write("directory|filename|file_ext\n")
+
+# Get the directory path, directory names, and file names from the given initial root path
+for dirpath, dirnames, filenames in os.walk(path):
+    for filename in filenames:
+        # Get directory path, filename, and file extension (path.splitext returns a tuple where the 2nd element is the file extension)
+        output_file.write(dirpath + "|" + filename+"|" + os.path.splitext(filename)[1] + "|\n")
+
+# Now we're done so close the file
+output_file.close()
+
+# Let us know when it is done!
+print "Finished!"

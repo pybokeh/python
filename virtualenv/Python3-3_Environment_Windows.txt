@@ -1,0 +1,44 @@
+Step 1:
+Download miniconda3 from http://conda.pydata.org/miniconda.html
+
+Step 2:
+Copy and paste .condarc file into Miniconda3 directory
+update PYTHONPATH, HTTP_PROXY, and PATH environment variables using DOS batch file
+
+Step 3:
+Create new environment: conda create -n notebook python=3.3
+
+Step 4:
+Install packages using conda install command or easy_install if not part of conda:
+setuptools
+pip
+pyzmq
+tornado
+pyreadline
+pygments
+markupsafe
+jinja2
+ipython
+six
+nose
+pip python-dateutil
+pytz
+pyparsing
+beautiful-soup
+openpyxl
+numpy
+scipy
+statsmodels
+pandas
+patsy
+PyQt
+matplotlib
+pyodbc
+easy_install path_to_pywin32
+numexpr
+install from source bottleneck
+easy_install path_to_PyCrypto (windwows binary: http://www.voidspace.org.uk/python/modules.shtml#pycrypto)
+
+Not part of python environment:
+Install pandoc at:
+https://github.com/jgm/pandoc/releases

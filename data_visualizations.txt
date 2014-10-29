@@ -1,0 +1,8 @@
+# ggplot for python:
+https://www.youtube.com/watch?v=pHrwqLhAaMw
+
+# rob story's up and down the Python vis stack:
+https://www.youtube.com/watch?v=kmy-sfm3cC8
+
+# making beautiful plots using MATPLOTLIB:
+http://www.randalolson.com/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib/

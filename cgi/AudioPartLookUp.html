@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<TITLE>
+Audio Part Supplier Look-Up
+</TITLE>
+</HEAD>
+<BODY>
+
+<script language="javascript" type="text/javascript">
+<!--
+function validate()
+{
+   if (document.form.mdl_nm.value=='' || document.form.part_no.value=='') {
+      alert('You must enter model name and part number.');
+      document.form.mdl_nm.focus();
+      return false;
+   }
+}
+//-->
+</script>
+
+<FORM name="form" ACTION="/python/cgi-bin/AudioPartLookUp.py" METHOD="POST" onSubmit='return validate();'>
+<H4>Step 1) Select model year, factory code, type the model name in upper case, and type the part number up to 5 digits:</H4>
+<TABLE STYLE="HEIGHT: 125px; WIDTH: 350px">
+<TR>
+	<TD>Model Year:</TD>
+	<TD><select name="mdl_yr">
+		<option>2010</option>
+		<option>2009</option>
+		<option>2008</option>
+	    </select>
+	</TD>
+</TR>
+<TR>
+	<TD>Factory Code:</TD>
+	<TD><select name="fctry_cd">
+		<option>MAP</option>
+		<option>ELP</option>
+		<option>HMIN</option>
+		<option>HDM</option>
+		<option>HMA</option>
+		<option>HCM</option>
+		<option>HUM</option>
+		<option>CSS</option>
+		<option>SSS</option>
+		<option>TSS</option>
+		</select>
+	</TD>
+</TR>
+<TR>
+	<TD>Model Name (All CAPS):</TD>
+	<TD>
+      <INPUT ALIGN=left NAME="mdl_nm" SIZE="15">
+    </TD>
+</TR>
+<TR>
+	<TD>Part # (up to 5 digits):</TD>
+	<TD>
+      <INPUT ALIGN=left NAME="part_no" SIZE="5">
+    </TD>
+</TR>
+</TABLE>
+<H4>Step 2) Click on "Submit" button below:</H4>
+  <INPUT TYPE="submit" NAME="Submit" VALUE="Submit">
+  <INPUT TYPE="reset" VALUE=Reset>
+</FORM>
+
+
+</BODY>
+</HTML>
+
+
+
+
