@@ -1,6 +1,9 @@
 # Get installer
 http://conda.pydata.org/miniconda.html
 
+# Download the installer
+wget "http://repo.continuum.io/miniconda/Miniconda3-3.7.0-Linux-x86.sh"
+
 # make the bash file executable with the chmod command (755)
 
 # Then execute the bash installer
