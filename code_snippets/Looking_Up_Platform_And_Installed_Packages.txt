@@ -1,0 +1,7 @@
+import platform
+import pip
+
+print(platform.platform())
+modules = pip.get_installed_distributions()
+for m in modules:
+    print(m)
