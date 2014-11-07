@@ -1,0 +1,11 @@
+# default user / pwd
+pi / raspberry
+
+# To enter raspi configuration GUI:
+raspi-config
+
+# To enter GUI:
+startx
+
+# Install RPi.GPIO library
+pip install RPi.GPIO

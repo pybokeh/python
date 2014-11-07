@@ -1,0 +1,14 @@
+# Step 1:
+Follow directions perhttp://www.raspberrypi.org/forums/viewtopic.php?f=43&t=63276 
+
+# Step 2:
+sudo vim /etc/raspimjpeg
+and set MP4Box false
+and rotate image/camera if necessary depending on how you will mount camera
+
+# Step 3: Create image if motion is detected
+http://www.raspberrypi.org/forums/viewtopic.php?f=43&t=63276&start=175#p491013
+
+# 2 config files to update:
+/etc/motion/motion.conf
+/etc/raspimjpeg
