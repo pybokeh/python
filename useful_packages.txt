@@ -22,3 +22,6 @@ pip requests
 
 # arrow: a better date/datetime api
 pip arrow
+
+# db.py: has a pandas-like api
+https://github.com/yhat/db.py
