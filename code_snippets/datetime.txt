@@ -9,6 +9,9 @@ mydate_withtime.strftime("%m/%d/%Y - %I:%M%p")
 # To parse a string date into an actual Python datetime object, use strptime() method. Example:
 dt = datetime.strptime("21/11/06 16:30", "%d/%m/%y %H:%M")
 
+# Creating a date with integers:
+mydate = datetime(2014,12,14,14,15,0) # (yyyy,mm,dd,hh,m,s)
+
 # If you just need date, them import date
 from datetime import date
 
