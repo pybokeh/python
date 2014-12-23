@@ -25,3 +25,6 @@ pip arrow
 
 # db.py: has a pandas-like api
 https://github.com/yhat/db.py
+
+# extracting just text from HTML
+https://github.com/rodricios/eatiht
