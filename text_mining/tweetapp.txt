@@ -1,0 +1,7 @@
+consumer key: 8KXJFF0rNM1AIXn31oqnVEHc0
+consumer secret: UmQgGftoZDG7v7KVRsYfhrcDfGw1Bwk6aCl5TOwVHJvBJWcYgj
+
+access token: 2771975857-gDNmPeJ9J6IWJ6EXczLL3wf6yaH1FMsEMMv40xz
+access token secret: LLGvFoC1mjV0R9nSpxI8Xv7uM0LZ2DkCZ003GFJqQSLUS
+
+owner id: 2771975857
